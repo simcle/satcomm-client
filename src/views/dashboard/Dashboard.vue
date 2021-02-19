@@ -201,7 +201,7 @@ export default {
             immediate: true,
             handler(user) {
                 if(user) {
-                    this.$rtdbBind('rtb', measuring.child(user.id))
+                    this.$rtdbBind('rtb', measuring.child(1))
                 }
             }
         
