@@ -23,9 +23,10 @@
                         <tr>
                             <th>Tanggal</th>
                             <th>pH meter</th>
-                            <th>Tempereatur</th>
+                            <th>Temperatur</th>
                             <th>COD (mg/l)</th>
                             <th>TSS (mg/l)</th>
+                            <th>NH4N (mg/l)</th>
                             <th>Debit (m3/h)</th>
                         </tr>
                     </thead>
@@ -60,8 +61,15 @@
                             <td>{{report.tmp}}
                                 <span v-if="i < reports.length - 1"><i :class="[report.tmp > reports[i+1].tmp ? 'icon-arrow-up5 text-danger':'icon-arrow-down5 text-success']"></i></span>
                             </td>
-                            <td>{{report.cod}}</td>
-                            <td>{{report.tss}}</td>
+                            <td>{{report.cod}}
+                                <span v-if="i < reports.length - 1"><i :class="[report.cod > reports[i+1].cod ? 'icon-arrow-up5 text-danger':'icon-arrow-down5 text-success']"></i></span>
+                            </td>
+                            <td>{{report.tss}}
+                                <span v-if="i < reports.length - 1"><i :class="[report.tss > reports[i+1].tss ? 'icon-arrow-up5 text-danger':'icon-arrow-down5 text-success']"></i></span>
+                            </td>
+                            <td>{{report.nh3n}}
+                                <span v-if="i < reports.length - 1"><i :class="[report.nh3n > reports[i+1].nh3n ? 'icon-arrow-up5 text-danger':'icon-arrow-down5 text-success']"></i></span>
+                            </td>
                             <td>{{report.debit}}</td>
                         </tr>
                     </tbody>
