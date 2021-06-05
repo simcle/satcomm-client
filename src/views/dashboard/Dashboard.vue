@@ -312,6 +312,9 @@ export default {
                 if(this.ph.length > 19){
                     this.ph.splice(0, 1)
                 }
+                if(this.tmp.length > 19){
+                    this.tmp.splice(0, 1)
+                }
                 if(this.nh4.length > 19) {
                     this.nh4.splice(0, 1)
                 }
