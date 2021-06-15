@@ -43,7 +43,15 @@
                     <canvas id="tssChart" width="300" height="200"></canvas>
                 </div>
             </div>
+        </div><div class="card card-body vld-parent">
+            <Loading
+                :active.sync="isLoading"
+                :is-full-page="false"
+            >
+            </Loading>
+            <canvas id="nh3nChart" width="300" height="100"></canvas>
         </div>
+
         <div class="card card-body vld-parent">
             <Loading
                 :active.sync="isLoading"
@@ -72,6 +80,7 @@ export default {
             tmp:[],
             cod:[],
             tss:[],
+            nh3n:[],
             debit:[],
         }
     },
@@ -88,6 +97,15 @@ export default {
         },
         revtmp () {
             return this.tmp.slice().reverse()
+        },
+        revcod () {
+            return this.cod.slice().reverse()
+        },
+        revtss () {
+            return this.tss.slice().reverse()
+        },
+        revnh3n () {
+            return this.nh3n.slice().reverse()
         }
     },
     methods: {
@@ -125,7 +143,7 @@ export default {
                     labels: app.revtime,
                     datasets:[{
                         label: 'COD (mg/l)',
-                        data: app.cod,
+                        data: app.revcod,
                         backgroundColor: 'rgba(255, 205, 86, 0.5)'
                     }]
                 }
@@ -137,8 +155,20 @@ export default {
                     labels: app.revtime,
                     datasets:[{
                         label: 'TSS (mg/l)',
-                        data: app.tss,
+                        data: app.revtss,
                         backgroundColor: 'rgba(153, 102, 255, 0.5)'
+                    }]
+                }
+            })
+            const nh3nChart = document.getElementById('nh3nChart')
+            window.tmp = new Chart(nh3nChart, {
+                type: 'bar',
+                data: {
+                    labels: app.revtime,
+                    datasets:[{
+                        label: 'NH4-N (mg/l)',
+                        data: app.revnh3n,
+                        backgroundColor: 'rgb(66,190,246, 0.5)'
                     }]
                 }
             })
@@ -165,6 +195,9 @@ export default {
                     this.time.push(time.getHours()+":"+time.getMinutes())
                     this.ph.push(el.ph) 
                     this.tmp.push(el.tmp)
+                    this.cod.push(el.cod)
+                    this.tss.push(el.tss)
+                    this.nh3n.push(el.nh3n)
                 });
                 this.showChart()
                 this.isLoading = false

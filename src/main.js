@@ -15,7 +15,7 @@ require('./assets/css/datepicker.css')
 window.$ = window.jQuery = require('jquery')
 require('./assets/js/datepicker')
 axios.defaults.withCredentials= true;
-axios.defaults.baseURL='http://127.0.0.1:8000/'
+axios.defaults.baseURL='https://apidemo.satcomm.co.id/'
 
 
 

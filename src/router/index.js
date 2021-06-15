@@ -82,7 +82,6 @@ router.beforeEach((to, from, next) => {
   else next()
   if(!to.meta.auth && store.getters['auth/authenticated']) next({name: 'Dashboard'})
   else next()
-
 })
 
 export default router
